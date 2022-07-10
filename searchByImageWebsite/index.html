@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- PNOTIFY -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/Material.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/BrightTheme.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/Angeler.css"
+    />
+    <!-- BASIC LIGHTBOX -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.css"
+      integrity="sha512-C+KPK958JmUdU8B9SVr8YpEZtQ1T1XrFX/OLvE/lt336DFWXFHL5Y9/tUewMEU+Uy3dUAS363XXLdBine0WDyQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- SKELETON -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+      integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    
+      
+      
+    
+    <div class="search-div">
+      <!-- Search input -->
+      <input
+        type="search"
+        placeholder="Search by image name"
+        id="search-button"
+      />
+      <!-- Pick API input -->
+      <p class = "api-selector-description">API:</p>
+      <select name="Pick your API" id="api-selector-button">
+        <option value="Pixabay" selected>Pixabay</option>
+        <option value="Unsplash">Unsplash</option>
+      </select>
+      <!-- random.cat -->
+      <button id="random-cat-button">Random cats</button>
+    </div>
+
+    <div class="gallery"></div>
+<!-- Pload more button -->
+    <button class="load-more" style="display: none">Load more</button>
+
+    <!-- templates -->
+    <template class="result-template-pixabay">
+      {{#each this}}
+
+      <div class="photo-card">
+        <img
+          class="gallery-item"
+          src="{{this.webformatURL}}"
+          alt=""
+          data-hd="{{this.largeImageURL}}"
+        />
+
+        <div class="stats">
+          <p class="stats-item">
+            <i class="material-icons">thumb_up</i>
+            {{this.likes}}
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">visibility</i>
+            {{this.views}}
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">comment</i>
+            {{this.comments}}
+          </p>
+          <p class="stats-item">
+            <i class="material-icons">cloud_download</i>
+            {{this.downloads}}
+          </p>
+        </div>
+      </div>
+      {{/each}}
+    </template>
+
+    <template class="result-template-unsplash">
+      {{#each this}}
+
+      <div class="photo-card">
+        <img
+          class="gallery-item"
+          src="{{this.urls.small}}"
+          alt=""
+          data-hd="{{this.urls.regular}}"
+        />
+
+        <div class="stats">
+          <p class="stats-item">
+            <i class="material-icons">thumb_up</i>
+            {{this.likes}}
+          </p>
+          <a class="stats-item" class="download-full" href = " {{this.links.download}}">
+            <i class="material-icons">download</i>
+            Download link
+          </a>
+          </p>
+        </div>
+      </div>
+      {{/each}}
+    </template>
+    
+  <template class="random-cat-template">
+    {{#each this}}
+    <div class = "random-cat-div"><img
+      class="random-cat-image"
+      src="{{this.webformatURL}}"
+      alt=""
+      data-hd="{{this.largeImageURL}}"
+      />
+    </div>
+  {{/each}}
+  </template>
+    <!-- scripts -->
+    <!-- LODASH-->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+    <!-- HANDLEBARS-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+      integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!--  MATERIAL ICONS-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- BASIC LIGHTBOX-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/basicLightbox/5.0.0/basicLightbox.min.js"
+      integrity="sha512-jIc3kBeyfyLXBTmzUIXnbGiVK2wgWGcDIkJwkFW4bQ6v2h/piOKLwIfy3wOmKHWIu8DgYSKVth0DMUvExMYcOw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- PNOTIFY-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@pnotify/core@5.2.0/dist/PNotify.min.js"
+      type="module"
+    ></script>
+
+    <!-- MAIN SCRIPT-->
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

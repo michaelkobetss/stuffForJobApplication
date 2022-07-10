@@ -1,0 +1,104 @@
+body {
+  background: linear-gradient(#ff8e8e, #fcfcfc);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.search-div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#search-button {
+  width: 50%;
+  font-size: 30px;
+}
+
+.api-selector-description {
+  font-weight: 600;
+  margin-top: 8px;
+  margin-left: 5%;
+  width: 190px;
+  height: 10px;
+}
+
+.photo-card {
+  background-color: rgba(233, 223, 218, 0.849);
+  border: 3px double rgba(85, 0, 0, 0.425);
+  border-radius: 2%;
+  margin: 1% 1%;
+  width: 100%;
+  padding: 1%;
+}
+
+.gallery {
+  display: grid;
+  width: 97%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 50px;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-item {
+  width: 98%;
+  margin: auto;
+  height: 300px;
+  border: 3px solid black;
+}
+
+.stats {
+  position: relative;
+  display: block;
+  justify-items: grid;
+}
+
+.stats-item {
+  margin: auto;
+  justify-self: bottom;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.load-more {
+  margin: auto;
+  display: block;
+}
+
+.random-cat-div{
+  background-color: rgba(233, 223, 218, 0.849);
+  border: 3px double rgba(85, 0, 0, 0.425);
+  border-radius: 2%;
+  padding: 1%;
+  position:static;
+
+}
+.random-cat-image{
+  width: 98%;
+  margin: auto;
+  height: 300px;
+  border: 3px solid black;
+}
+
+
