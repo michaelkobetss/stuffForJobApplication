@@ -59,6 +59,7 @@ body {
 .stats-item {
   margin: auto;
   justify-self: bottom;
+  
 }
 
 a:link {
@@ -93,6 +94,7 @@ a:active {
   padding: 1%;
   position:static;
 
+
 }
 .random-cat-image{
   width: 98%;
@@ -101,4 +103,19 @@ a:active {
   border: 3px solid black;
 }
 
+img{
+  animation: slidein 0.5s;
+}
+
+
+
+@keyframes slidein {
+  from {
+    margin-bottom: -100%;
+  }
+
+  to {
+    margin-bottom: 0%;
+  }
+}
 
