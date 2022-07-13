@@ -90,7 +90,7 @@ a:active {
 .random-cat-div{
   background-color: rgba(233, 223, 218, 0.849);
   border: 3px double rgba(85, 0, 0, 0.425);
-  border-radius: 2%;
+  border-radius: 5px;
   padding: 1%;
   position:static;
 

@@ -1,13 +1,13 @@
 export default class UnsplashGallery {
-  constructor(values, refs, pageNumber = 1) {
+  constructor(values, refs) {
     this.values = values;
     this.refs = refs;
-    this.pageNumber = pageNumber;
+    this.pageNumber = 1;
     this.anonymousFunction = _.debounce(this.findImage, 1000);
   }
 
   init = () => {
-    this.refs.searchButton.addEventListener("input", (this.anonymousFunction)); //listener on search <input>
+    this.refs.searchButton.addEventListener("input", this.anonymousFunction); //listener on search <input>
     this.refs.loadMoreButton.addEventListener("click", this.findMoreImages); //listener on load more <button>
     this.refs.gallery.addEventListener("click", this.onGalleryClick); //listener on images to open modal window
   };
@@ -23,7 +23,8 @@ export default class UnsplashGallery {
       `https://api.unsplash.com/search/photos/?query=${this.refs.searchButton.value}&page=${this.pageNumber}&per_page=15${this.values.UNSPLASH_API_KEY}`
     )
       .then((data) => data.json())
-      .then((images) => this.drawImages(images));
+      .then((images) => this.drawImages(images))
+      .catch((err) => console.error(err));
   };
 
   findMoreImages = () => {
@@ -32,7 +33,8 @@ export default class UnsplashGallery {
       `https://api.unsplash.com/search/photos/?query=${this.refs.searchButton.value}&page=${this.pageNumber}&per_page=15${this.values.UNSPLASH_API_KEY}`
     )
       .then((data) => data.json())
-      .then((images) => this.drawMoreImages(images.results));
+      .then((images) => this.drawMoreImages(images.results))
+      .catch((err) => console.error(err));
   };
 
   // Rendering page after api response

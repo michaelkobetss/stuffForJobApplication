@@ -1,6 +1,6 @@
 export default {
   searchButton: document.querySelector("#search-button"), //search buttong <input>
-  loadMoreButton: document.querySelector(".load-more"), //load more button <button>
+  loadMoreButton: document.querySelector("#load-more"), //load more button <button>
   resultTemplatePixabay: document.querySelector(".result-template-pixabay")
     .innerHTML, //to draw result with handlebars <template>
   resultTemplateUnsplash: document.querySelector(".result-template-unsplash")

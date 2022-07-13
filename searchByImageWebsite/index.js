@@ -4,7 +4,6 @@ import RandomCat from "./js/randomCat.js"
 import PixabayGallery from "./js/pixabaySearch.js"
 import UnsplashGallery from "./js/unsplashSearch.js"
 
-
 refs.apiButton.addEventListener("input", (e) => {
   if (e.target.value === "Pixabay") {
     searchPixabayGallery.init();
@@ -26,5 +25,4 @@ let searchPixabayGallery = new PixabayGallery(values, refs);
 searchPixabayGallery.init();
 
 let searchUnsplashGallery = new UnsplashGallery(values, refs);
-
 

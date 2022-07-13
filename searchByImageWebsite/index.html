@@ -37,6 +37,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+       <!--  MATERIAL ICONS-->
+       <link
+       href="https://fonts.googleapis.com/icon?family=Material+Icons"
+       rel="stylesheet"
+     />
   </head>
 
   <body>
@@ -63,7 +68,7 @@
 
     <div class="gallery"></div>
 <!-- Pload more button -->
-    <button class="load-more" style="display: none">Load more</button>
+    <button class="load-more" id="load-more" style="display: none">Load more</button>
 
     <!-- templates -->
     <template class="result-template-pixabay">
@@ -73,7 +78,8 @@
         <img
         id="slide"
           class="gallery-item"
-          src="{{this.webformatURL}}"
+          src= ""
+          data-src="{{this.webformatURL}}"
           alt=""
           data-hd="{{this.largeImageURL}}"
         />
@@ -149,11 +155,7 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <!--  MATERIAL ICONS-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+ 
 
     <!-- BASIC LIGHTBOX-->
     <script
