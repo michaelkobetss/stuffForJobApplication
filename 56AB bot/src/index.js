@@ -3,6 +3,7 @@ require("dotenv").config();
 const { TOKEN, CLIENT_ID, GUILD_ID, PS2_SERVICE_ID } = process.env;
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
+const Permissions = require("discord.js");
 const commands = require("./commands/commands.js");
 const ping = require("./commands/ping.js");
 const dmall = require("./commands/dmall.js");
@@ -43,29 +44,39 @@ client.on("interactionCreate", async (interaction) => {
 
   if (interaction.commandName === "ping") {
     await ping(interaction);
+    console.log(
+      interaction.member.permissions.has(
+        Permissions.PermissionFlagsBits.BanMembers
+      )
+    );
   }
 
-  if (interaction.commandName === "dmall") {
-    await console.log(interaction.guild.members);
+  if (
+    interaction.commandName === "dmall" &&
+    interaction.member.permissions.has(
+      Permissions.PermissionFlagsBits.BanMembers
+    )
+  ) {
     let membersToTag = await interaction.options.data[1].role.members.keys();
     let tagArr = [...membersToTag];
 
-    await tagArr.map((item, index) => {
+    await tagArr.map((user, index) => {
       setTimeout(() => {
         client.users.cache
-          .get(item)
+          .get(user)
           .send(interaction.options.data[0].value)
           .catch((err) => {
             console.log(err);
           });
 
-        console.log(`message sent to ${item}`);
-      }, 1000 * index);
+        console.log(`message sent to ${user}`);
+      }, 6000 * index);
     });
 
     await interaction.reply(`Message sent: ${interaction.options.data[0].value}
 recievers: ${tagArr}`);
   }
+  else {interaction.reply("Not not enough perms for this command")}
 });
 
 client.login(TOKEN);
