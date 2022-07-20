@@ -1,1 +1,3 @@
-module.exports = (interaction)=>{interaction.reply("Pong!");}
+module.exports = (int) => {
+  int.reply("Pong!");
+};

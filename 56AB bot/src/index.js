@@ -43,12 +43,12 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   if (interaction.commandName === "ping") {
-    await ping(interaction);
-    console.log(
-      interaction.member.permissions.has(
-        Permissions.PermissionFlagsBits.BanMembers
-      )
-    );
+    console.log(interaction.guild.id);
+    try {
+      return ping(interaction);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   if (
@@ -57,26 +57,10 @@ client.on("interactionCreate", async (interaction) => {
       Permissions.PermissionFlagsBits.BanMembers
     )
   ) {
-    let membersToTag = await interaction.options.data[1].role.members.keys();
-    let tagArr = [...membersToTag];
-
-    await tagArr.map((user, index) => {
-      setTimeout(() => {
-        client.users.cache
-          .get(user)
-          .send(interaction.options.data[0].value)
-          .catch((err) => {
-            console.log(err);
-          });
-
-        console.log(`message sent to ${user}`);
-      }, 6000 * index);
-    });
-
-    await interaction.reply(`Message sent: ${interaction.options.data[0].value}
-recievers: ${tagArr}`);
+    return dmall(interaction, client);
+  } else {
+    return interaction.reply("Not not enough perms for this command");
   }
-  else {interaction.reply("Not not enough perms for this command")}
 });
 
 client.login(TOKEN);
